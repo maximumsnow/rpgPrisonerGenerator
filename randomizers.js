@@ -30,19 +30,19 @@ function raceRandomizer() {
 // Class Randomizer
 function classRandomizer() {
     diceValue = rollDice(1, 100);
-    if (diceValue < 31) {
+    if (diceValue <= 30) {
         return ("Citizen");
     } else if (diceValue == 31) {
         return ("Druid");
-    } else if (diceValue < 43) {
+    } else if (diceValue <= 42) {
         return ("Fighter");
-    } else if (diceValue < 51) {
+    } else if (diceValue <= 50) {
         return ("Merchant");
-    } else if (diceValue < 58) {
+    } else if (diceValue <= 57) {
         return ("Wizard");
-    } else if (diceValue < 61) {
+    } else if (diceValue <= 60) {
         return ("Sorcerer");
-    } else if (diceValue < 66) {
+    } else if (diceValue <= 65) {
         return ("Cleric");
     } else if (diceValue == 66) {
         return ("Ranger");
@@ -54,21 +54,21 @@ function classRandomizer() {
 // Alignment Randomizer
 function alignmentRandomizer() {
     diceValue = rollDice(1, 100);
-    if (diceValue < 11) {
+    if (diceValue <= 10) {
         return ("Lawful Evil");
-    } else if (diceValue < 26) {
+    } else if (diceValue <= 25) {
         return ("Neutral Evil");
-    } else if (diceValue < 51) {
+    } else if (diceValue <= 50) {
         return ("Chaotic Evil");
-    } else if (diceValue < 56) {
+    } else if (diceValue <= 55) {
         return ("Lawful Neutral");
-    } else if (diceValue < 66) {
+    } else if (diceValue <= 65) {
         return ("Neutral");
-    } else if (diceValue < 81) {
+    } else if (diceValue <= 80) {
         return ("Chaotic Neutral");
-    } else if (diceValue < 86) {
+    } else if (diceValue <= 85) {
         return ("Lawful good");
-    } else if (diceValue < 91) {
+    } else if (diceValue <= 90) {
         return ("Neutral Good");
     } else {
         return ("Chaotic Good");
@@ -76,17 +76,25 @@ function alignmentRandomizer() {
 };
 
 // Crime Randomizer
-function multipleOffense(iter) {
+function crime() {
     crimes = [];
-    iter = iter + 1;
+    iter = 1;
+    diceValue = rollDice(1, 100);
+    if (diceValue < 93) {
+        iter = 1;
+    } else if (diceValue < 97) {
+        iter += rollDice(1, 4);
+    } else {
+        iter += rollDice(1, 6);
+    };
+
     for (i=0; i < iter; i++) {
         crimes.push(crimeRandomizer(rollDice(1, 85)));
     };
     return (crimes)
 };
 
-function crimeRandomizer() {
-    diceValue = rollDice(1, 100);
+function crimeRandomizer(diceValue) {
     if (diceValue < 11) {
         return ("Political Crime")
     } else if (diceValue == 11) {
@@ -127,13 +135,7 @@ function crimeRandomizer() {
         return ("Assault");
     } else if (diceValue < 86) {
         return ("Treason");
-    } else if (diceValue < 93) {
-        return (multipleOffense(1));
-    } else if (diceValue < 97) {
-        return (multipleOffense(rollDice(1, 4)));
-    } else if (diceValue < 101) {
-        return (multipleOffense(rollDice(1, 6)))
-    }
+    };
 };
 
 // Innocence or Guilty Randomizer
@@ -173,5 +175,6 @@ module.exports = {
     crimeRandomizer,
     guilty,
     durationOfSentance,
-    prisonerLevel
+    prisonerLevel,
+    crime
 }
