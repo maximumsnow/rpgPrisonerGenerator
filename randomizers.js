@@ -77,14 +77,10 @@ function alignmentRandomizer() {
 
 // Crime Randomizer
 function multipleOffense(iter) {
-    crimes = "";
+    crimes = [];
     iter = iter + 1;
     for (i=0; i < iter; i++) {
-        crimes = crimes + crimeRandomizer(rollDice(1, 85));
-
-        if (i != iter) {
-            crimes = crimes + ", "
-        }
+        crimes.push(crimeRandomizer(rollDice(1, 85)));
     };
     return (crimes)
 };

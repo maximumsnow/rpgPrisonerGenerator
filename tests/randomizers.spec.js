@@ -53,6 +53,7 @@ test('should return true if guilty, crime = !Political Crime', () => {
 
 // Crime Randomizer Unit Tests
 const {crimeRandomizer} = require('../randomizers');
+const {multipleOffense} = require('../randomizers');
 
 test('should return Political Crime when < 11', () => {
     global.Math.random = () => 0.00;
@@ -282,6 +283,21 @@ test('should return Treason when 84-85', () => {
     expect(crimeRandomizer()).toEqual("Treason");
 });
 
+test('should return 2 offences when 86-92', () => {
+    expect(multipleOffense(1).length).toEqual(2);
+    // global.Math.random = () => 0.86;
+    // expect(crimeRandomizer()).length.toEqual(2);
+    // global.Math.random = () => 0.87;
+    // expect(crimeRandomizer()).length.toEqual(2);
+    // global.Math.random = () => 0.88;
+    // expect(crimeRandomizer()).length.toEqual(2);
+    // global.Math.random = () => 0.89;
+    // expect(crimeRandomizer()).length.toEqual(2);
+    // global.Math.random = () => 0.90;
+    // expect(crimeRandomizer()).length.toEqual(2);
+    // global.Math.random = () => 0.91;
+    // expect(crimeRandomizer()).length.toEqual(2);
+});
 
 
 
