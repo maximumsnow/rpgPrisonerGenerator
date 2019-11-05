@@ -21,9 +21,9 @@ function raceRandomizer() {
     } else if (diceValue < 91) {
         return ("Gnome");
     } else if (diceValue < 96) {
-        return ("Half Orc");
+        return ("Half-Orc");
     } else {
-        return ("Half-elf");
+        return ("Half-Elf");
     };
 };
 
